@@ -24,10 +24,14 @@ input = Entry(width=10)
 
 #buttons
 def button_click():
-    new_text = float(input.get()) * 1.609344
-    
-    answer_label.config(text = f"{new_text}")
-button = Button(text="button", command=button_click)
+    try:
+        new_text = float(input.get()) * 1.609344
+        answer_label.config(text = f"{new_text:.2f}")
+    except ValueError:
+        answer_label.config(text = f"Invalid input")
+
+
+button = Button(text="convert", command=button_click)
 button.config(bg="white",width=5, height=1)
 
 
